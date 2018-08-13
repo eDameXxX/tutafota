@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="Fotooo.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Fotooo.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:ConnectionId='1' Name="ContentGrid" Background="#f9f9f9">
+        <TextBlock x:ConnectionId='2' x:Name="tb1" Text="Latest Photos" FontSize="36epx" Foreground="Black"
+                           Margin="67,28"/>
+
+        <Grid HorizontalAlignment="Left" Height="200" Width="400" Background="Gold"
+                      Margin="80,120,0,0" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+
+    </Grid>
+    
+</Page>
+

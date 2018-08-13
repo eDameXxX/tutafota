@@ -1,0 +1,14 @@
+﻿<Application
+    x:Class="Fotooo.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Fotooo"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        <!-- Add your client id here. -->
+        <x:String x:Key="ida:ClientID">f18d846f-37ce-4fcd-9d12-f7197f4d8708</x:String>
+        <x:String x:Key="ida:ReturnUrl">msalf18d846f-37ce-4fcd-9d12-f7197f4d8708://auth</x:String>
+    </Application.Resources>
+
+</Application>
