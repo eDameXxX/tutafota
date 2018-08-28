@@ -1,4 +1,5 @@
-﻿using Fotooo.Models;
+﻿using Fotooo.Helpers;
+using Fotooo.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,6 +31,8 @@ namespace Fotooo.Views
 
         ObservableCollection<Notebook> Notebooks = new ObservableCollection<Notebook>();
 
+        private OneNoteHelper _oneNoteHelper = new OneNoteHelper();
+
         public ContentPage()
         {
             this.InitializeComponent();
@@ -46,13 +49,16 @@ namespace Fotooo.Views
 
             if (Settings.currentSettings != null)
             {
-                for (int i = 0; i < Settings.currentSettings.notebooks.Value.Length; i++)
+                for (int i = 0; i < Settings.currentSettings.pages.Value.Length; i++)
                 {
                     //Debug.WriteLine(Settings.currentSettings.notebooks.Value[i].DisplayName);
                     Notes.Add(new Note
                     {
-                        Title = Settings.currentSettings.notebooks.Value[i].DisplayName,
-                        Content = Settings.currentSettings.notebooks.Value[i].CreatedBy.User.DisplayName
+                        Id = Settings.currentSettings.pages.Value[i].Id,
+                        Title = Settings.currentSettings.pages.Value[i].Title
+                        //Title = Settings.currentSettings.notebooks.Value[i].DisplayName,
+                        //Content = Settings.currentSettings.notebooks.Value[i].CreatedBy.User.DisplayName,
+                        //ContentUrl = Settings.currentSettings.pages.Value[i].Title
                     });
                 }
             }
@@ -65,13 +71,32 @@ namespace Fotooo.Views
             NotesListView.ItemsSource = Notes;
 
 
-
-
         }
 
+        private async void Note_Click(object sender, ItemClickEventArgs e)
+        {
+            Debug.WriteLine("Note item: ", e.OriginalSource.ToString());
+            Debug.WriteLine("Note item: ", sender.ToString());
+            var note = (Note)e.ClickedItem;
+            Debug.WriteLine("Note item: ", note.Title.ToString());
+            string noteId = note.Id;
+            string results = await _oneNoteHelper.GetNotesContentAsync(noteId);
+            Debug.WriteLine("CONTENT URL: ", results);
+        }
 
-        
+        private void NoteSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Debug.WriteLine("Note item2: ", e.AddedItems.ToString());
+            //Debug.WriteLine("Note item2: ", sender.ToString());
+            //var note = (Note)e.AddedItems;
+            //Debug.WriteLine("Note item2: ", note.Title);
+            //Debug.WriteLine("Note item2: ");
+        }
 
-
+        private void IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            Debug.WriteLine("Note item3: ", e.ToString());
+            Debug.WriteLine("Note item3: ", sender.ToString());
+        }
     }
 }

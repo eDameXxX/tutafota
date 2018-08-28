@@ -21,6 +21,7 @@ using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using Fotooo.Models;
+using static Fotooo.Models.NotePage;
 
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -38,7 +39,7 @@ namespace Fotooo.Views
         private OneNoteHelper _oneNoteHelper = new OneNoteHelper();
 
         public Notebook notebooks = null;
-        public NotePage pages = null;
+        public Start pages  = null;
 
         public static Settings currentSettings;
         public Settings()
@@ -164,7 +165,7 @@ namespace Fotooo.Views
 
             pages = NotePage.Start.FromJson(results);
 
-            Debug.WriteLine("{0} notebooks", notebooks.Value.Length);
+            Debug.WriteLine("{0} notebooks", pages.ToString());
             //foreach (var page in )
           /// {
           //      Debug.WriteLine(page.DisplayName);

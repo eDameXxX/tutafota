@@ -173,5 +173,44 @@ namespace Fotooo.Helpers
 
         }
 
+        public async Task<string> GetNotesContentAsync(string id)
+        {
+            string responseContent = null;
+
+            try
+            {
+                HttpClient client = new HttpClient();
+                var token = await AuthenticationHelper.GetTokenForUserAsync();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+
+                // Endpoint for the Pages (Notes)
+                string endPoint;
+                endPoint = "https://graph.microsoft.com/beta/users/me/onenote/pages/" + id + "/content";
+                Uri pagesEndpoint = new Uri(endPoint);
+
+                HttpResponseMessage response = await client.GetAsync(pagesEndpoint);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    responseContent = await response.Content.ReadAsStringAsync();
+                    //jResult = JObject.Parse(responseContent);
+                }
+                else
+                {
+                    return responseContent;
+                }
+
+            }
+
+            catch (Exception e)
+            {
+                return null;
+
+            }
+
+            return responseContent;
+
+        }
+
     }
 }

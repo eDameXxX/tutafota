@@ -28,24 +28,36 @@
 
         </Image>
 
-        <ListView Name="NotesListView" Style="{StaticResource NotesListViewStyle}" ItemsSource="{x:Bind Notes}"  BorderBrush="red" BorderThickness="1">
+        <ListView Name="NotesListView" 
+                  Style="{StaticResource NotesListViewStyle}" 
+                  ItemsSource="{x:Bind Notes}" 
+                  BorderBrush="red" BorderThickness="1"
+                  IsItemClickEnabled="True"
+                  ItemClick="Note_Click"
+                  SelectionChanged="NoteSelectionChanged" >
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Note">
-                    <ListViewItem Width="auto" BorderThickness="2" BorderBrush="yellow" Margin="-8,5" Padding="2" HorizontalContentAlignment="Stretch">
+                    <ListViewItem Width="auto" BorderThickness="2" BorderBrush="yellow" 
+                                  Margin="-8,5" Padding="2" HorizontalContentAlignment="Stretch"
+                                  IsEnabledChanged="IsEnabledChanged">
                         <Grid BorderBrush="AliceBlue" BorderThickness="1" Width="auto" Padding="3,5,3,20" Background="Snow">
                             <Grid.RowDefinitions>
+                                <!--<RowDefinition />
                                 <RowDefinition />
                                 <RowDefinition />
+                                <RowDefinition /> -->
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="{x:Bind Title}" Foreground="blue" />
                             <TextBlock Grid.Row="1" Text="{x:Bind Content}" />
+                            <TextBlock Grid.Row="2" Text="{x:Bind ContentUrl}" />
                         </Grid>
                     </ListViewItem>
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    <Setter Property="VerticalContentAlignment" Value="Top" />
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
