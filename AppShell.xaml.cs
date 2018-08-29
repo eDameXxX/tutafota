@@ -81,5 +81,10 @@ namespace Fotooo
         {
             MainFrame.Navigate(typeof(Views.Settings), e);
         }
+
+        private void ImgBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(Views.ImagePage), e);
+        }
     }
 }

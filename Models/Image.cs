@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Fotooo.Models
 {
-    class Image
+    public class Image
     {
+        public string ImageUrl { get; set; }
     }
 }

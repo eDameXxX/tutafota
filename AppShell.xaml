@@ -66,9 +66,16 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="FavBtn" FontFamily="Segoe MDL2 Assets" Content="&#xE734;"
-                        Width="50" Height="50" Background="Transparent" Foreground="Yellow"
+                        Width="50" Height="50" Background="Transparent" Foreground="Orange"
                             FontSize="18epx" Click="FavBtn_Click"/>
                     <TextBlock Text="Favorites" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="ImgBtn" FontFamily="Segoe MDL2 Assets" Content="&#xEB9F;"
+                        Width="50" Height="50" Background="Transparent" Foreground="Red"
+                            FontSize="18epx" Click="ImgBtn_Click"/>
+                    <TextBlock Text="Images" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
 
 

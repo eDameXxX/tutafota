@@ -185,7 +185,8 @@ namespace Fotooo.Helpers
 
                 // Endpoint for the Pages (Notes)
                 string endPoint;
-                endPoint = "https://graph.microsoft.com/beta/users/me/onenote/pages/" + id + "/content";
+                endPoint = "https://graph.microsoft.com/beta/users/me/onenote/pages/" + id + "/content?preAuthenticated=true";
+                //endPoint = "https://onenote.com/api/v1/users/me/onenote/pages/" + id + "/content?preAuthenticated=true";
                 Uri pagesEndpoint = new Uri(endPoint);
 
                 HttpResponseMessage response = await client.GetAsync(pagesEndpoint);

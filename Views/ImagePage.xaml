@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="Fotooo.Views.ImagePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Fotooo.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:Fotooo.Models"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+         
+        <ListView Name="ListViewImages"
+                  ItemsSource="{x:Bind Images}" >
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Image">
+                    <Image Source="{x:Bind ImageUrl}" HorizontalAlignment="Center"
+                           Height="100" Width="100"
+                           Margin="100,100,0,0" />
+                </DataTemplate>
+                
+            </ListView.ItemTemplate>
+        
+        </ListView>
+
+        <Image Name="imageTest">
+            
+        </Image>
+
+
+    </Grid>
+
+</Page>

@@ -19,7 +19,9 @@
     </Page.Resources>
     
     <Grid Background="LightCoral">
-
+        
+        <ProgressRing x:Name="ProgressRing" IsActive="false" Height="100" Width="100" Foreground="Green" />
+        
         <Image Source="/Assets/notes_symbol.png" 
                HorizontalAlignment="Stretch" 
                Height="200" 
@@ -29,6 +31,8 @@
         </Image>
 
         <ListView Name="NotesListView" 
+                  Width="400px"
+                  Background="Yellow"
                   Style="{StaticResource NotesListViewStyle}" 
                   ItemsSource="{x:Bind Notes}" 
                   BorderBrush="red" BorderThickness="1"
@@ -62,5 +66,13 @@
             </ListView.ItemContainerStyle>
         </ListView>
 
+        <WebView Name="NoteContentWebview" 
+                 HorizontalAlignment="Left" 
+                 Margin="450,10,0,0" 
+                 VerticalAlignment="Top" 
+                 Width="700"
+                 Height="800" />
+
     </Grid>
+    
 </Page>

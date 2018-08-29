@@ -70,18 +70,52 @@ namespace Fotooo.Views
 
             NotesListView.ItemsSource = Notes;
 
+            String notePlaceholderHTML = @"
+                        <html><body style='padding: 20px;'><div class='container loading' style='display: flex;
+                          border: 1px solid #eaecef;
+                          height: 200px;
+                          padding: 1%;
+                          background-color: white;
+                          box-shadow: 2px 5px 5px 1px lightgrey;'>
+                          <div class='img-container' style='width: 15%;
+                          padding: 20px;'>
+                            <div class='img' style='border:1px solid white;width:100%;height:100%;background-color:#babbbc;animation:hintloading 2s ease-in-out 0s infinite reverse;-webkit-animation:hintloading 2s ease-in-out 0s infinite reverse;'>
+                            </div>
+                          </div>
+                          <div class='content' style='border: 1px solid white;
+                          flex-grow: 1;
+                          display: flex;
+                          flex-direction: column;
+                          padding: 20px;
+                          justify-content: space-between;'>
+                            <div class='stripe small-stripe' style='border:1px solid white;height:20%;background-color:#babbbc;width:40%;animation:hintloading 2s ease-in-out 0s infinite reverse;-webkit-animation:hintloading 2s ease-in-out 0s infinite reverse;'>
+                            </div>
+                            <div class='stripe medium-stripe' style='border:1px solid white;height:20%;background-color:#babbbc;width:70%;animation:hintloading 2s ease-in-out 0s infinite reverse;-webkit-animation:hintloading 2s ease-in-out 0s infinite reverse;'>
+                            </div>
+                            <div class='stripe long-stripe' style='border:1px solid white;height:20%;background-color:#babbbc;width:100%;animation:hintloading 2s ease-in-out 0s infinite reverse;-webkit-animation:hintloading 2s ease-in-out 0s infinite reverse;'>
+                            </div>
+                          </div>
+                        </div></body>
+                        </html>".Replace("'", "\"");
+
+            NoteContentWebview.NavigateToString(notePlaceholderHTML);
 
         }
 
         private async void Note_Click(object sender, ItemClickEventArgs e)
         {
+            ProgressRing.IsActive = true;
             Debug.WriteLine("Note item: ", e.OriginalSource.ToString());
             Debug.WriteLine("Note item: ", sender.ToString());
             var note = (Note)e.ClickedItem;
             Debug.WriteLine("Note item: ", note.Title.ToString());
             string noteId = note.Id;
             string results = await _oneNoteHelper.GetNotesContentAsync(noteId);
-            Debug.WriteLine("CONTENT URL: ", results);
+            string resultsFixed = results.Replace("users('me')", "users/me");
+            Debug.WriteLine("CONTENT URL: ", resultsFixed.ToString());
+            //Debug.WriteLine("TOKEN  ", Settings.token.ToString());           
+            NoteContentWebview.NavigateToString(resultsFixed);
+            ProgressRing.IsActive = false;
         }
 
         private void NoteSelectionChanged(object sender, SelectionChangedEventArgs e)

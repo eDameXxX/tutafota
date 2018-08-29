@@ -35,6 +35,8 @@ namespace Fotooo.Views
     {
         private string _mailAddress;
         private string _displayName = null;
+        public static string token;
+
         public static ApplicationDataContainer _settings = ApplicationData.Current.RoamingSettings;
         private OneNoteHelper _oneNoteHelper = new OneNoteHelper();
 
@@ -55,7 +57,8 @@ namespace Fotooo.Views
         /// <returns></returns>
         public async Task<bool> SignInCurrentUserAsync()
         {
-            var token = await AuthenticationHelper.GetTokenForUserAsync();
+            token = await AuthenticationHelper.GetTokenForUserAsync();
+            Debug.WriteLine("TOKEN: ", token);
 
             if (token != null)
             {
@@ -68,6 +71,11 @@ namespace Fotooo.Views
                 return false;
             }
 
+        }
+
+        public string getToken()
+        {
+            return token;
         }
 
         private async void LoginOneNote_Click(object sender, RoutedEventArgs e)
