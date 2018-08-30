@@ -11,13 +11,15 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
          
         <ListView Name="ListViewImages"
-                  ItemsSource="{x:Bind Images}" >
+                  ItemsSource="{x:Bind Images}" 
+                  HorizontalAlignment="Center"
+                  Width="auto" >
 
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Image">
                     <Image Source="{x:Bind ImageUrl}" HorizontalAlignment="Center"
-                           Height="100" Width="100"
-                           Margin="100,100,0,0" />
+                           Height="auto" Width="auto" VerticalAlignment="Center" 
+                           Margin="10,20,10,10" />
                 </DataTemplate>
                 
             </ListView.ItemTemplate>

@@ -35,7 +35,8 @@ namespace Fotooo.Views
             {
                 Images.Add(new Models.Image
                 {
-                   ImageUrl = "ms-appx:///Assets/notes_symbol.png"
+                    ImageUrl = "ms-appx:///Assets/" + i + ".jpg",
+                    SetNote()
                 });
             }
 

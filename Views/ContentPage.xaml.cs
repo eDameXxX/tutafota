@@ -27,7 +27,7 @@ namespace Fotooo.Views
     public sealed partial class ContentPage : Page
     {
 
-        ObservableCollection<Note> Notes = new ObservableCollection<Note>();
+        public ObservableCollection<Note> Notes = new ObservableCollection<Note>();
 
         ObservableCollection<Notebook> Notebooks = new ObservableCollection<Notebook>();
 
